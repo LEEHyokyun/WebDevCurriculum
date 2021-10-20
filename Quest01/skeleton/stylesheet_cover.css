@@ -1,0 +1,31 @@
+body{
+    display: flex;
+}
+
+.cover_main{
+    flex: 1;
+    font-family: 'Righteous', cursive;
+    font-size : 50px;
+    justify-content: 'center';
+    margin: 5%;
+    margin-left: 20%;
+}
+
+.h1, img{
+    text-align: 'center';
+}
+
+.cover_sub{
+    flex-direction: 'column';
+    flex: 1;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size : 20px;
+    justify-content: 'center';
+    margin: 12.5%;
+    margin-right: 15%;
+}
+
+.h3{
+    flex-direction: 'column';
+    text-align: 'center';
+}

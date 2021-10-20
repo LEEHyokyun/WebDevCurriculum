@@ -1,0 +1,65 @@
+.pg_head_container{
+    display: flex;
+}
+
+/*별도의 class처리가 없는 기본 tag의 경우 하위속성으로 접근*/
+.pg_head_disquiet{
+    flex: 1;
+    flex-direction: 'row';
+    font-family: 'Righteous', cursive;
+    font-size: 40px;
+    text-align: center;
+    border-right:1px solid gainsboro
+}
+
+.pg_head_input{
+    padding: 50px;
+    flex-direction: 'row';
+    flex: 0.4;
+    justify-content: 'center';
+    border-right:1px solid gainsboro;
+}
+
+.input > input{
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 15px;
+    margin: 10px;
+    width: 50;
+    height: 10;
+}
+
+.button > button{
+    border: 1px solid skyblue;
+    background-color: rgba(0,0,0,0);
+    color: black;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 15px;
+    margin: 10px;
+    width: 200;
+    height: 10;
+}
+
+.pg_bdy_nav_container{
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: no-wrap;
+}
+
+/*html에서 별도의 class 처리를 해주었을 경우에는 상속없이 바로 접근*/
+.component {
+    margin : auto;
+    font-family: 'Nanum Myeongjo', serif;
+    flex-direction: 'row';
+}
+
+.pg_bdy_content_container{
+    
+}
+
+.content{
+    padding: 50px;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 15px;
+    border-bottom:1px solid gainsboro
+}
