@@ -38,19 +38,39 @@
 				// row1 Squares는 node list up.
 				// nodelist는 row1에 있는 4개 사각형이 들어있는 class list (*4lists)
 				for(let node of row1Squares) {
-					node.addEventListener('click', click)
+					node.addEventListener('click', click1);
 				}
-						
-				function click(e){
-					color = e.target.style.backgroundColor
+
+				function click1(e){
+					let color = e.target.style.backgroundColor
 					if(color==='') {e.target.style.backgroundColor = 'yellow'}
-					else if(color==='yellow') {e.target.style.backgroundColor= ''}
+					else if(color==='yellow') {e.target.style.backgroundColor= ''};
 				}
 			
 			let row2Squares = document.querySelectorAll('.row2 .square');
-			for(let node of row2Squares) {
-				
-			}
+				// row2 Squares는 node list up.
+				// nodelist는 row1에 있는 4개 사각형이 들어있는 class list (*4lists)
+				for(let node of row2Squares) {
+					node.addEventListener('click', click2)
+					//console.log(node.classList)
+				}
+
+				function click2(e){
+					//console.log(e.target.classList.value)
+					//classList is directly related to class.
+					//classList, value is only related to class' name.
+					let classList = e.target.classList;
+					console.log(classList);
+					//console.log(e.target.classList[1])
+
+						e.target.classList.toggle('enabled');
+					/*
+					if(("enabled")){
+						e.target.classList.remove('enabled');
+					}else{
+						e.target.classList.add('enabled');
+					}*/
+				}
 		</script>
 	</body>
 </html>
