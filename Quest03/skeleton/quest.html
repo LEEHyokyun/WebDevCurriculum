@@ -33,14 +33,23 @@
 		</section>
 
 		<script>
+			//documnet에서 아래 DOM class와 일치하는 모든 엘리먼트들을 list up.
 			let row1Squares = document.querySelectorAll('.row1 .square');
-			for(let node of row1Squares) {
-				/* TODO: node 변수를 어떻게 조작해야 할까요? */
-			}
-
+				// row1 Squares는 node list up.
+				// nodelist는 row1에 있는 4개 사각형이 들어있는 class list (*4lists)
+				for(let node of row1Squares) {
+					node.addEventListener('click', click)
+				}
+						
+				function click(e){
+					color = e.target.style.backgroundColor
+					if(color==='') {e.target.style.backgroundColor = 'yellow'}
+					else if(color==='yellow') {e.target.style.backgroundColor= ''}
+				}
+			
 			let row2Squares = document.querySelectorAll('.row2 .square');
 			for(let node of row2Squares) {
-				/* TODO: node 변수를 어떻게 조작해야 할까요? */
+				
 			}
 		</script>
 	</body>
