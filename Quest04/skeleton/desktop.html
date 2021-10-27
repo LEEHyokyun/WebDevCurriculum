@@ -7,12 +7,56 @@
 	</head>
 	<body>
 		<section class="desktop">
+			<div class="container">
+				<div class="box"></div>
+				<div class="box"></div>
+			</div>
 		</section>
 
 		<script>
-			let myDesktop = new Desktop(
-				/* TODO: myDesktop 인스턴스의 생성자의 변수로 무엇이 들어가야 할까요? */
-			);
+			//Class 선언 및 정의는 outer source(desktop.js)에서 정의
+			let myDesktop = new Desktop(2,5);
+			myDesktop.makeIcon();
+
+			//drag
+				let section = document.querySelector('.desktop')
+				let container = section.querySelector('.container');
+				let box = container.querySelector('.box')
+
+				let isClicked = false;
+				let offsetX, offsetY = 0;
+
+				let currentObject = null;
+
+				container.onmousedown = function(e){
+					//box를 선택하였을때만
+					
+					isClicked = true;
+
+					offsetX = e.offsetX;
+					offsetY = e.offsetY;
+
+					current = e.target;
+					
+				}
+
+				//box가 종속되어있는 부모영역(DOM)에서 움직일 경우에 반응
+				//box 객체에 대해서는 mousemove event에 반응하여 움직임
+				container.onmousemove = function(e){
+					if(isClicked){
+						current.style.position = 'absolute';
+						current.style.left = e.pageX - offsetX + 'px';
+						current.style.top = e.pageY - offsetY + 'px';
+					}else{
+						return ;
+					}
+
+				container.onmouseup = function(e){
+					isClicked = false;
+				}
+			}
+
+			
 		</script>
 	</body>
 </html>

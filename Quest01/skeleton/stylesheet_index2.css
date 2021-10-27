@@ -1,47 +1,71 @@
-.headline{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.pg_head_container{
+
 }
 
 /*별도의 class처리가 없는 기본 tag의 경우 하위속성으로 접근*/
 .pg_head_disquiet{
-    flex: 1;
-    flex-direction: 'row';
+
     font-family: 'Righteous', cursive;
     font-size: 40px;
     text-align: center;
-    border-right:1px solid gainsboro
+    border-bottom:1px solid gainsboro;
+    
 }
 
-h1{
-    font-family: 'Righteous', cursive;
-    font-size: 80px;
-    margin: 10px;
-    width: 200;
-    height: 10;
+.pg_head_input{
+    padding: 50px;
+    border-bottom:1px solid gainsboro;
+    display: 'inline-block';
+    justify-content: 'center';
+    width: 100%;
+    overflow: 'hidden';
+    
 }
 
-.headline h2{
+.pg_head_click{
+    padding: 50px;
+
+    
+    justify-content: 'center';
+    border-bottom:1px solid gainsboro;
+}
+
+.input{
+    width: 10%;
+    float: 'left';
+}
+
+.button{
+    width: 90%;
+    float: 'right';
+}
+
+.input > input{
     font-family: 'Nanum Myeongjo', serif;
-    font-size: 40px;
+    font-size: 15px;
+    margin: 10px;
+    width: 30;
+    height: 10;
+    
+}
+
+
+.button > button{
+    display: flex;
+    flex-direction: 'row';
+    border: 1px solid skyblue;
+    background-color: rgba(0,0,0,0);
+    color: black;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 15px;
     margin: 10px;
     width: 200;
     height: 10;
+    
 }
-
-.pg_head_disquiet h2{
-    font-family: 'Righteous', cursive;
-    font-size: 40px;
-    margin: 10px;
-    width: 200;
-    height: 10;
-}
-
 
 .pg_bdy_nav_container{
     display: flex;
-    flex-direction: column;
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: no-wrap;

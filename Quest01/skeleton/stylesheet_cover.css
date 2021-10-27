@@ -11,21 +11,25 @@ body{
     margin-left: 20%;
 }
 
-.h1, img{
-    text-align: 'center';
+.cover_sub{
+    flex: 8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
 }
 
-.cover_sub{
-    flex-direction: 'column';
+.cover_sub_content{
     flex: 1;
+    display: flex;
+    flex-direction: column;
     font-family: 'Nanum Myeongjo', serif;
     font-size : 20px;
-    justify-content: 'center';
-    margin: 12.5%;
-    margin-right: 15%;
+    text-align: center;
+    justify-content: center;
 }
 
 .h3{
-    flex-direction: 'column';
-    text-align: 'center';
+    
 }

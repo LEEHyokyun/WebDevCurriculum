@@ -1,1 +1,22 @@
-/* TODO: 자유롭게 바탕화면 시스템의 CSS를 만들어 보세요! */
+body{
+    background: whitesmoke;
+}
+
+.window{
+    
+    display: flex;
+    flex-direction: row;
+}
+
+.container{
+    border: 1px solid gray;
+    width: 800px;
+    height: 400px;
+}
+
+.box{
+    width: 100px;
+    height: 100px;
+    background: yellow;
+    border: 1px solid green;
+}

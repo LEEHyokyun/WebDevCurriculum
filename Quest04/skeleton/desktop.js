@@ -1,15 +1,30 @@
+//바탕화면 생성자(아이콘, 폴더 개수)
 class Desktop {
-	/* TODO: Desktop 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
+	constructor(iconNumber, folderNumber) {
+		this.iconNumber = iconNumber;
+		this.folderNumber = folderNumber;
+	}
+
+	makeIcon() {
+		console.log(this.iconNumber);
+	}
+
+	makeFolder() {
+		console.log(this.folderNumber);
+	}
 };
 
+//Icon 속성과 행동 정의
 class Icon {
-	/* TODO: Icon 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
+	
 };
 
+//Folder 속성과 행동 정의
 class Folder {
-	/* TODO: Folder 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
+	
 };
 
+//보여지는 화면 관련한 속성과 행동 정의
 class Window {
-	/* TODO: Window 클래스는 어떤 멤버함수와 멤버변수를 가져야 할까요? */
+	
 };
