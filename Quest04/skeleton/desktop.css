@@ -20,3 +20,15 @@ body{
     background: yellow;
     border: 1px solid green;
 }
+
+.newbox{
+    width: 100px;
+    height: 100px;
+    background: green;
+    border: 1px solid yellow;
+    position: 'fixed';
+}
+
+.hidden{
+    display: none;
+}

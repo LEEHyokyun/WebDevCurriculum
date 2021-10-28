@@ -16,7 +16,13 @@ class Desktop {
 
 //Icon 속성과 행동 정의
 class Icon {
-	
+	constructor(event){
+		this.event = event;
+	}
+
+	mousedown(event){
+		console.log(event);
+	}
 };
 
 //Folder 속성과 행동 정의

@@ -19,42 +19,46 @@
 			myDesktop.makeIcon();
 
 			//drag
-				let section = document.querySelector('.desktop')
-				let container = section.querySelector('.container');
-				let box = container.querySelector('.box')
+			let section = document.querySelector('.desktop');
+			let container = section.querySelector('.container');
+			let box = container.querySelector('.box');
 
-				let isClicked = false;
-				let offsetX, offsetY = 0;
+			let isClicked = false;
+			let offsetX, offsetY = 0;
 
-				let currentObject = null;
+			let currentObject = null;
 
 				container.onmousedown = function(e){
 					//box를 선택하였을때만
-					
+					console.log(e.target.classList);
+					if(e.target.classList.contains('box')){
 					isClicked = true;
 
 					offsetX = e.offsetX;
 					offsetY = e.offsetY;
 
-					current = e.target;
-					
+					currentObject = e.target;
+					}	
 				}
 
 				//box가 종속되어있는 부모영역(DOM)에서 움직일 경우에 반응
 				//box 객체에 대해서는 mousemove event에 반응하여 움직임
 				container.onmousemove = function(e){
 					if(isClicked){
-						current.style.position = 'absolute';
-						current.style.left = e.pageX - offsetX + 'px';
-						current.style.top = e.pageY - offsetY + 'px';
+						currentObject.style.position = 'absolute';
+						currentObject.style.left = e.pageX - offsetX + 'px';
+						currentObject.style.top = e.pageY - offsetY + 'px';
 					}else{
 						return ;
 					}
 
 				container.onmouseup = function(e){
 					isClicked = false;
+					}
 				}
-			}
+
+				//folder
+				
 
 			
 		</script>
