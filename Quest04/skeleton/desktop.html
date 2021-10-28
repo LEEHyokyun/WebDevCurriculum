@@ -7,9 +7,20 @@
 	</head>
 	<body>
 		<section class="desktop">
-			<div class="container">
+			<div class="iconContainer">
 				<div class="box"></div>
 				<div class="box"></div>
+			</div>
+			<div class="folderContainer">
+				<div class="button">GO TO FOLDER</div>
+			</div>
+			<div class="folderLayout hidden">
+				<div class="folderOverlay"></div>
+				<div class="folderContent">
+					<h1 class="title">WELCOM TO FOLDER</h1>
+					<br><br><br><br><br><br>
+					<button>EXIT</button>
+				</div>
 			</div>
 		</section>
 
@@ -20,8 +31,8 @@
 
 			//drag
 			let section = document.querySelector('.desktop');
-			let container = section.querySelector('.container');
-			let box = container.querySelector('.box');
+			let iconContainer = section.querySelector('.iconContainer');
+			let box = iconContainer.querySelector('.box');
 
 			let isClicked = false;
 			let offsetX = 0;
@@ -31,24 +42,81 @@
 			let icon = new Icon(isClicked, offsetX, offsetY, currentObject);
 
 
-			container.onmousedown = function(e){
+			iconContainer.onmousedown = function(e){
 				icon.mousedown(e);
 			}
 			//box가 종속되어있는 부모영역(DOM)에서 움직일 경우에 반응
 			//box 객체에 대해서는 mousemove event에 반응하여 움직임
-			container.onmousemove = function(e){
+			iconContainer.onmousemove = function(e){
 				icon.mousemove(e);
 			}
 
-			container.onmouseup = function(e){
+			iconContainer.onmouseup = function(e){
 				icon.mouseup();
 			}
 				
 
 			//folder
-				
+			let folder = new Folder(isClicked. offsetX, offsetY, currentObject);
+
+
+			//let folder = section.querySelector('.folderLayout');
+			let clickButtonLayer = section.querySelector('.folderContainer');
+			let clickButton = clickButtonLayer.querySelector('.button');
+
+			let folderWindow = section.querySelector('.folderLayout');
+			let folderWindowOverlay = folderWindow.querySelector('.folderOverlay');
+			let folderContent = folderWindow.querySelector('.folderContent');
+			let folderWindowOverlayExitButton = folderContent.querySelector('button');
+
+			//button drag event
+			clickButtonLayer.addEventListener('mousedown', (e)=>{
+				folder.mousedown(e);
+			});
+			clickButtonLayer.addEventListener('mousemove', (e)=>{
+				folder.mousemove(e);
+			})
+			clickButtonLayer.addEventListener('mouseup', (e)=>{
+				folder.mouseup();
+			})
+
+			//folder window drag event
+			folderWindow.addEventListener('mousedown', (e)=>{
+				folder.mousedown(e);
+			});
+			folderWindow.addEventListener('mousemove', (e)=>{
+				folder.mousemove(e);
+			})
+			folderWindow.addEventListener('mouseup', (e)=>{
+				folder.mouseup();
+			})
+
+			//folder create event
+			clickButtonLayer.addEventListener('click', (e)=>{
+				folder.getFolderWindow(e, folderWindow);
+			});
+
+			//folder remove event - by exit button
+			folderWindowOverlayExitButton.addEventListener('click', ()=>{
+				folder.removeFolderWindow(folderWindow);
+			})
+
+			//folder remove event - by overlay click
+			folderWindowOverlay.addEventListener('click', ()=>{
+				folder.removeFolderWindow(folderWindow);
+			})
 
 			
+
+
+
+			
+					
+		
+			
+
+
+
 		</script>
 	</body>
 </html>

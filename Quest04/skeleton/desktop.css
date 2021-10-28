@@ -8,10 +8,78 @@ body{
     flex-direction: row;
 }
 
-.container{
+.iconContainer{
     border: 1px solid gray;
-    width: 800px;
+    width: 100%;
     height: 400px;
+    margin: 10px;
+}
+
+.folderContainer{
+    border: 1px solid gray;
+    width: 100%;
+    height: 400px;
+    margin: 10px;
+}
+
+.folderLayout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.19), 0px 6px 6px rgba(0, 0, 0, 0.23);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    background-color: gray;
+    opacity: 80%;
+}
+
+.folderOverlay{
+    position: absolute;
+    background-color: gainsboro;
+    width: 100%;
+    height: 100%;
+}
+
+.folderContent{
+    position: relative;
+    top: 0;
+
+    height: 80%;
+    width: 60%;
+    
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.19), 0px 6px 6px rgba(0, 0, 0, 0.23);
+
+    background-color: honeydew;
+    padding: 10px;
+
+    text-align: center;
+
+    border-radius: 15px;
+
+    cursor: grabbing;
+}
+
+
+.folderContent button{
+    text-align: center;
+    justify-content: center;
+
+    color: black;
+
+    padding : 5px;
+    width: 50px;
+    height: 30px;
+    background: blanchedalmond;
+    border: 1px solid yellow;
+    border-radius: 10px;
+    position: 'fixed';
+
+    cursor: pointer;
 }
 
 .box{
@@ -19,15 +87,25 @@ body{
     height: 100px;
     background: yellow;
     border: 1px solid green;
+    cursor: pointer;
 }
 
-.newbox{
-    width: 100px;
-    height: 100px;
+.button{
+
+    text-align: center;
+    justify-content: center;
+
+    padding : 5px;
+    width: 300px;
+    height: 30px;
     background: green;
     border: 1px solid yellow;
+    border-radius: 10px;
     position: 'fixed';
+
+    cursor: pointer;
 }
+
 
 .hidden{
     display: none;
