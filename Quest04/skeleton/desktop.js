@@ -16,12 +16,35 @@ class Desktop {
 
 //Icon 속성과 행동 정의
 class Icon {
-	constructor(event){
-		this.event = event;
+	constructor(isClicked, offsetX, offsetY, currentObject){
+		this.isClicked = isClicked;
+		this.offsetX = offsetX;
+		this.offsetY = offsetY;
+		this.currentObject = currentObject;
 	}
 
-	mousedown(event){
-		console.log(event);
+	mousedown(e){
+		if(e.target.classList.contains('box')){
+			this.isClicked = true
+			this.offsetX = e.offsetX;
+			this.offsetY = e.offsetY;
+			this.currentObject = e.target
+
+		}	
+	}
+
+	mousemove(e){
+		if(this.isClicked == true){
+			this.currentObject.style.position = 'absolute';
+			this.currentObject.style.left = e.pageX - this.offsetX + 'px';	
+			this.currentObject.style.top = e.pageY - this.offsetY + 'px';
+		}else{
+			return ;
+		}
+	}
+
+	mouseup(){
+		this.isClicked = false;
 	}
 };
 

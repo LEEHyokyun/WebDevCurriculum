@@ -24,40 +24,28 @@
 			let box = container.querySelector('.box');
 
 			let isClicked = false;
-			let offsetX, offsetY = 0;
-
+			let offsetX = 0;
+			let offsetY = 0;
 			let currentObject = null;
 
-				container.onmousedown = function(e){
-					//box를 선택하였을때만
-					console.log(e.target.classList);
-					if(e.target.classList.contains('box')){
-					isClicked = true;
+			let icon = new Icon(isClicked, offsetX, offsetY, currentObject);
 
-					offsetX = e.offsetX;
-					offsetY = e.offsetY;
 
-					currentObject = e.target;
-					}	
-				}
+			container.onmousedown = function(e){
+				icon.mousedown(e);
+			}
+			//box가 종속되어있는 부모영역(DOM)에서 움직일 경우에 반응
+			//box 객체에 대해서는 mousemove event에 반응하여 움직임
+			container.onmousemove = function(e){
+				icon.mousemove(e);
+			}
 
-				//box가 종속되어있는 부모영역(DOM)에서 움직일 경우에 반응
-				//box 객체에 대해서는 mousemove event에 반응하여 움직임
-				container.onmousemove = function(e){
-					if(isClicked){
-						currentObject.style.position = 'absolute';
-						currentObject.style.left = e.pageX - offsetX + 'px';
-						currentObject.style.top = e.pageY - offsetY + 'px';
-					}else{
-						return ;
-					}
+			container.onmouseup = function(e){
+				icon.mouseup();
+			}
+				
 
-				container.onmouseup = function(e){
-					isClicked = false;
-					}
-				}
-
-				//folder
+			//folder
 				
 
 			
