@@ -1,53 +1,42 @@
 *{
 	padding: 0;
 	margin: 0;
+
 	list-style: none;
 }
 
-section{
-	padding: 10px;
+a{
+	text-decoration: none;
+	color: inherit;
 }
 
-.tab .ul{
+.tab{
 	display: flex;
-
-	height: 61px;
 }
 
-.tab .ul .li{
-	font-family: 'Roboto', sans-serif;
-	font-size: 20px;
-
+.tab .section{
 	flex: 1;
 
-	
-	
-	border-left: none;
-
-	height: 60px;
-
-	border-bottom: none;
-}
-
-.tab .ul .li:first-child{
-	
-}
-
-.tab .ul .li .a{
-	border: 1px solid gray;
-	border-left: 1px solid gray;
-
-	display: block;
-	height: 60px;
-
-	border-bottom: 1px solid blue;
-
 	text-align: center;
-	line-height: 60px;
-	text-decoration: none;
+	line-height: 50px;
+
+	height: 50px;
+	border: 1px solid gray;
 }
- 
-.tab .ul .li .clickTab{
-	border-color: blue;
+
+.tab .section .clickArea{
+	height: 50px;
+	
+	display: block;
+}
+
+.tab .section .contentLine{
+
+	font-weight: bold;
+	color: gray;
 	border-bottom: 1px solid white;
+}
+
+.display{
+	display: none;
 }

@@ -8,58 +8,95 @@
 	</head>
 	<body>
 		<section class id="1">
-			<nav class="tab">
-				<ul class="ul">
-					<!--버튼 클릭하였을때 활성화 상태를 class로 제공-->
-					<li class="li"><a href="#a" class="a" class id="a">EDITOR1</a></li>
-					<li class="li"><a href="#a" class="a" class id="b">EDITOR2</a></li>
-					<li class="li"><a href="#a" class="a" class id="c">EDITOR3</a></li>
-					<li class="li"><a href="#a" class="a" class id="d">EDITOR4</a></li>
+			<div class="tab">
+				<ul class="section">
+					<li><a href="#" class="clickArea" id="a" data-tab-target="#contentA">SECTION1</a></li>
+					<div></div>
 				</ul>
-			</nav>
-
+				<ul class="section">
+					<li><a href="#" class="clickArea" id="b" data-tab-target="#contentB">SECTION2</a></li>
+					<div></div>
+				</ul>
+				<ul class="section">
+					<li><a href="#" class="clickArea" id="c" data-tab-target="#contentC">SECTION3</a></li>
+					<div></div>
+				</ul>
+				<ul class="section">
+					<li><a href="#" class="clickArea" id="d" data-tab-target="#contentD">SECTION4</a></li>
+					<div></div>
+				</ul>
+			</div>
 		</section>
 		<section class id="2">
-
+			<div class="content">
+				<div id="contentA" data-tab-content class="display">
+					<h1>SECTION1의 내용입니다</h1>
+					<h2>HELLO WORLD</h2>
+				</div>
+				<div id="contentB" data-tab-content class="display">
+					<h1>SECTION2의 내용입니다</h1>
+					<h2>HELLO WORLD</h2>	
+				</div>
+				<div id="contentC" data-tab-content class="display">
+					<h1>SECTION3의 내용입니다</h1>
+					<h2>HELLO WORLD</h2>
+				</div>
+				<div id="contentD" data-tab-content class="display">
+					<h1>SECTION4의 내용입니다</h1>
+					<h2>HELLO WORLD</h2>
+				</div>
+			</div>
 		</section>
-		<script>
-	
-			a = document.querySelectorAll('.a')
+	<script>
+		let section1 = document.getElementById('1');
+		let tabs = section1.querySelector('.tab');
+		let li = tabs.querySelectorAll('.li');
+		let clickAreas = tabs.querySelectorAll('.clickArea');
 
-			let checkList = [];
+		let realTabs = document.querySelectorAll('[data-tab-target]');
+		let realContents = document.querySelectorAll('[data-tab-content]')
 
-			for(let node of a){
-				node.addEventListener('click', (e)=>click(e));
-			}
-			
-
-
-			function click(e){
-				
-
-				if(checkList.length == 0){
-					checkList.push(e.target.id);
-					//console.log(checkList[0]);
-					e.target.classList.toggle('clickTab');
-
-				}else if(checkList.length > 0 && checkList.includes(e.target.id)){
-					checkList.pop(e.target.id);
-					//console.log(checkList[0]);
-					e.target.classList.toggle('clickTab');
-
-				}else if(checkList.length > 0 && !(checkList.includes(e.target.id))){
-					//console.log(checkList[0]);
-					let previousObject = document.getElementById(checkList[0]);
-					previousObject.classList.toggle('clickTab');
-					e.target.classList.toggle('clickTab');
-
-					checkList.pop();
-					checkList.push(e.target.id);
-				}
-				//console.log(e.target.innerText);
-				//console.log(e.target.id);
-			}
+		let checkList = [];
 		
-		</script>
+		//for tab click event
+		for(let element of clickAreas){
+			element.addEventListener('click', (e)=>clickEvent(e));
+		}
+
+		//for content click event
+		for(let tab of realTabs){
+			tab.addEventListener('click', ()=>{
+				const target = document.querySelector(tab.dataset.tabTarget);
+				for(let content of realContents){
+					content.classList.add('display');
+				}
+				target.classList.remove('display');
+			})
+		}
+
+		clickEvent = (e) => {
+			//let contentTarget = document.querySelector(e.dataset.tabTarget);
+			//ntentTarget.classList.add('.display')
+			//initial state
+			if(checkList.length == 0){
+				checkList.push(e.target.id);
+				e.target.classList.toggle('contentLine');
+			//click itself
+			}else if(checkList.length > 0 && checkList.includes(e.target.id)){
+				checkList.pop(e.target.id);
+				e.target.classList.toggle('clickArea');
+			//click others
+			}else if(checkList.length > 0 && !(checkList.includes(e.target.id))){
+				let previousObject = document.getElementById(checkList[0]);
+				previousObject.classList.toggle('contentLine');
+				e.target.classList.toggle('contentLine');
+
+				checkList.pop();
+				checkList.push(e.target.id);
+				}
+		};
+
+		
+	</script>
 	</body>
 </html>
