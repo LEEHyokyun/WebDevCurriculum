@@ -2,13 +2,64 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="/style.css">
-		<script src="/notepad.js"></script>
+		<link rel="stylesheet" href="./style.css">
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Open+Sans:wght@300&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
+		<script src="./notepad.js"></script>
 	</head>
 	<body>
-		<!-- TODO: 이 곳을 채워 클라이언트를 만들어 보세요 -->
+		<section class id="1">
+			<nav class="tab">
+				<ul class="ul">
+					<!--버튼 클릭하였을때 활성화 상태를 class로 제공-->
+					<li class="li"><a href="#a" class="a" class id="a">EDITOR1</a></li>
+					<li class="li"><a href="#a" class="a" class id="b">EDITOR2</a></li>
+					<li class="li"><a href="#a" class="a" class id="c">EDITOR3</a></li>
+					<li class="li"><a href="#a" class="a" class id="d">EDITOR4</a></li>
+				</ul>
+			</nav>
+
+		</section>
+		<section class id="2">
+
+		</section>
 		<script>
-			let notepad = new Notepad();
+	
+			a = document.querySelectorAll('.a')
+
+			let checkList = [];
+
+			for(let node of a){
+				node.addEventListener('click', (e)=>click(e));
+			}
+			
+
+
+			function click(e){
+				
+
+				if(checkList.length == 0){
+					checkList.push(e.target.id);
+					//console.log(checkList[0]);
+					e.target.classList.toggle('clickTab');
+
+				}else if(checkList.length > 0 && checkList.includes(e.target.id)){
+					checkList.pop(e.target.id);
+					//console.log(checkList[0]);
+					e.target.classList.toggle('clickTab');
+
+				}else if(checkList.length > 0 && !(checkList.includes(e.target.id))){
+					//console.log(checkList[0]);
+					let previousObject = document.getElementById(checkList[0]);
+					previousObject.classList.toggle('clickTab');
+					e.target.classList.toggle('clickTab');
+
+					checkList.pop();
+					checkList.push(e.target.id);
+				}
+				//console.log(e.target.innerText);
+				//console.log(e.target.id);
+			}
+		
 		</script>
 	</body>
 </html>
