@@ -37,6 +37,10 @@ a{
 	border-bottom: 1px solid white;
 }
 
-.display{
+.content{
+	padding: 20px;
+}
+
+.content .display{
 	display: none;
 }
