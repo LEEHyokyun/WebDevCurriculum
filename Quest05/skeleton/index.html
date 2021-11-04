@@ -28,22 +28,26 @@
 			</div>
 		</section>
 		<section class id="2">
+			<div class="fileReader">
+				<input class="loader" type="file" accept="*" />
+				<div class="divisionpreviewImage">
+					<img src="" class="previewImage" alt="Check Image here">
+				</div>
+			</div>
+		</section>
+		<section class id="3">
 			<div class="content">
 				<div id="contentA" data-tab-content class="display">
-					<h1>SECTION1의 내용입니다</h1>
-					<h2>HELLO WORLD</h2>
+					<input class="editor" value="contentA"/>
 				</div>
 				<div id="contentB" data-tab-content class="display">
-					<h1>SECTION2의 내용입니다</h1>
-					<h2>HELLO WORLD</h2>	
+					<input class="editor" value="contentB"/>	
 				</div>
 				<div id="contentC" data-tab-content class="display">
-					<h1>SECTION3의 내용입니다</h1>
-					<h2>HELLO WORLD</h2>
+					<input class="editor" value="contentC"/>
 				</div>
 				<div id="contentD" data-tab-content class="display">
-					<h1>SECTION4의 내용입니다</h1>
-					<h2>HELLO WORLD</h2>
+					<input class="editor" value="contentD"/>
 				</div>
 			</div>
 		</section>
@@ -64,9 +68,19 @@
 		let tabaction = new tabAction();
 
 		//for tabclick event
-		tabaction.getTabClicked(checkList, clickAreas);
+		tabaction.setTabClicked(checkList, clickAreas);
 		//tabaction.getContentWithTabs
-		tabaction.getContentWithTabsClicked(connectTabstoContent, connectContentstoTabs);	
+		tabaction.setContentWithTabsClicked(connectTabstoContent, connectContentstoTabs);	
+
+		// file read(upload) logic
+		let reader = new FileReader();
+		let preview = document.querySelector('img.previewImage');
+		let fileInput = document.querySelector('input[type="file"]');
+
+		//class
+		let fileupload = new fileUpload();
+		fileupload.setUploadFile(reader, preview, fileInput);
+
 	</script>
 	</body>
 </html>
