@@ -51,6 +51,13 @@
 				</div>
 			</div>
 		</section>
+		<section class id="4">
+			<div class="fileSave">
+				<div class="messageBox"></div>
+				<input class="textArea" type="text" value="WRITE HERE!" />
+				<button class="saveButton">SAVE</button>
+			</div>
+		</section>
 	<script>
 		//objects declared
 		let section1 = document.getElementById('1');
@@ -81,6 +88,49 @@
 		let fileupload = new fileUpload();
 		fileupload.setUploadFile(reader, preview, fileInput);
 
+		/*
+		var fileName = "myfile.txt";
+		var fileContent = document.querySelector('download').innerText;
+		var myFile = new Blob([fileContent], {type: 'text/plain'});
+
+		window.URL = window.URL || window.webkitURL;
+		var dlBtn = document.getElementById("download");
+
+		dlBtn.setAttribute("href", window.URL.createObjectURL(myFile));
+		dlBtn.setAttribute("download", fileName);
+
+
+		**HTML CODE : <input a href="#" id="download">Download</a>
+		*/
+
+		let saveButton = document.querySelector('.saveButton');
+		let textArea = document.querySelector('.textArea');
+		let isSaved = false;
+
+		let messageBox = document.querySelector('.messageBox');
+		let indicator = document.createTextNode('UNSAVED');
+
+		saveButton.addEventListener('click', ()=>{
+			downloadFunction(textArea.value, 'file.txt', 'text/plain');
+			messageBox.removeChild(indicator);
+		})
+
+		function downloadFunction(content, fileName, fileType){
+			const a = document.createElement('a');
+			const textFile = new Blob([content], {type: fileType});
+		
+			a.href = URL.createObjectURL(textFile);
+			a.download = fileName;
+			a.click();
+
+			URL.revokeObjectURL(a.href);
+		}
+
+		textArea.addEventListener('input', (e)=>{indicateChangedText(e)});
+
+		function indicateChangedText(e){		
+			messageBox.appendChild(indicator);
+		}
 	</script>
 	</body>
 </html>
