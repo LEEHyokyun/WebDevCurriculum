@@ -103,34 +103,17 @@
 		**HTML CODE : <input a href="#" id="download">Download</a>
 		*/
 
+		//file create and save as logic
+
 		let saveButton = document.querySelector('.saveButton');
 		let textArea = document.querySelector('.textArea');
-		let isSaved = false;
 
 		let messageBox = document.querySelector('.messageBox');
 		let indicator = document.createTextNode('UNSAVED');
 
-		saveButton.addEventListener('click', ()=>{
-			downloadFunction(textArea.value, 'file.txt', 'text/plain');
-			messageBox.removeChild(indicator);
-		})
-
-		function downloadFunction(content, fileName, fileType){
-			const a = document.createElement('a');
-			const textFile = new Blob([content], {type: fileType});
-		
-			a.href = URL.createObjectURL(textFile);
-			a.download = fileName;
-			a.click();
-
-			URL.revokeObjectURL(a.href);
-		}
-
-		textArea.addEventListener('input', (e)=>{indicateChangedText(e)});
-
-		function indicateChangedText(e){		
-			messageBox.appendChild(indicator);
-		}
+		//class
+		let filedownloadandsaveas = new fileDownloadAndSaveAs();
+		filedownloadandsaveas.setFileDownloadSaveAs(saveButton, textArea, messageBox, indicator);
 	</script>
 	</body>
 </html>

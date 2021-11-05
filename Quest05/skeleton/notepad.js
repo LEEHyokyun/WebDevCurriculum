@@ -96,3 +96,39 @@ class fileUpload{
 			};
 	}
 }
+
+class fileDownloadAndSaveAs{
+	constructor(){
+		this.saveButton = saveButton;
+		this.textArea = textArea;
+		this.messageBox = messageBox;
+		this.indicator = indicator;
+	}
+
+	setFileDownloadSaveAs(saveButton, textArea, messageBox, indicator){
+		saveButton.addEventListener('click', ()=>{
+			downloadFunction(textArea.value, 'file.txt', 'text/plain');
+			messageBox.removeChild(indicator);
+		})
+
+		function downloadFunction(content, fileName, fileType){
+			const a = document.createElement('a');
+			const textFile = new Blob([content], {type: fileType});
+		
+			a.href = URL.createObjectURL(textFile);
+			a.download = fileName;
+			a.click();
+
+			URL.revokeObjectURL(a.href);
+		}
+
+		textArea.addEventListener('input', indicateChangedText);
+
+		function indicateChangedText(){		
+			messageBox.appendChild(indicator);
+		}
+	}
+
+
+
+}
