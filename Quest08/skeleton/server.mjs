@@ -1,8 +1,12 @@
 import http from 'http';
 
-const server = http.createServer((req, res) => {
-    /* TODO: 각각의 URL들을 어떻게 처리하면 좋을까요? */
-    res.end();
-});
+let PORT = 8080;
 
-server.listen(8000);
+const server = http.createServer();
+
+server.on('connection', (socket)=>{
+    console.log('NEW CONNECTION');
+})
+
+
+server.listen(PORT, console.log("SERVER IS RUNNING"));
