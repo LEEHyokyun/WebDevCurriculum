@@ -8,6 +8,7 @@ const server = http.createServer((req, res) => {
         if(err){
             throw err;
         }else{
+            res.writeHead(200, { 'content-Type' : 'text/html; charset=utf-8'})
             res.write(data);
             //data to JSON
             //JSON.stringify(data)
