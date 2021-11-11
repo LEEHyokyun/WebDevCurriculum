@@ -1,0 +1,13 @@
+body .imageAreaCover{
+    position: relative;
+
+    width: 50%;
+    height: 100px;
+}
+
+body .imageAreaCover .imageArea{
+    position: absolute;
+
+    width: 50%;
+    height: 100px;
+}
