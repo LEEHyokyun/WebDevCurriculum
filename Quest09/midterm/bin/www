@@ -4,8 +4,8 @@
  * Module dependencies.
  */
 
- var APISERVER = require('../server/client.js');
- var CLIENTSERVER = require('../server/API.js');
+ var APISERVER = require('../server/API.js');
+ var CLIENTSERVER = require('../server/client.js');
 
  var debug = require('debug')('httpserver2:server');
  var http = require('http');
@@ -24,8 +24,8 @@
   * Create HTTP server.
   */
  
- var server1 = http.createServer(CLIENTSERVER);
- var server2 = http.createServer(APISERVER);
+ var server1 = http.createServer(APISERVER);
+ var server2 = http.createServer(CLIENTSERVER);
  
  /**
   * Listen on provided port, on all network interfaces.
