@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src='./index.js'></script>
-    <title>filesystem</title>
+    <!--script src="index.js"></script-->
+    <title>index</title>
 </head>
 <body>
     <button class="fileOpen" type="file">파일 불러오기</button>
@@ -23,9 +23,13 @@
     let fileRead = new FileReader();
 
     //when window loaded after file read
+    //persist data
+    //and get file data with URL user data
+    let userName = document.URL.split('/').pop();
+
     document.addEventListener('DOMContentLoaded', ()=>{
-        let imageDATA = localStorage.getItem('recent-image');
-        let txtDATA = localStorage.getItem('recent-txt');
+        let imageDATA = localStorage.getItem(`${userName}forimg`);
+        let txtDATA = localStorage.getItem(`${userName}fortxt`);
 
         if(imageDATA || txtDATA){
             textArea.innerText = txtDATA;
@@ -33,7 +37,6 @@
         }else{
             return;
         }
-        
     })
     
 
@@ -87,16 +90,12 @@
         }
 
         function afterTxtRead(text){
- 
-                localStorage.setItem('recent-txt', text)
- 
+            localStorage.setItem(`${userName}fortxt`, text)
         }
 
         function afterImageRead(){
-
             fileRead.addEventListener('load', () => {
-                
-            localStorage.setItem('recent-image' , fileRead.result);
+            localStorage.setItem(`${userName}forimg` , fileRead.result);
             //console.log(fileRead.result);
             //console.log(imageArea.src);
             })
