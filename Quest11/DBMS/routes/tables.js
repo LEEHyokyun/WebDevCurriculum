@@ -2,6 +2,7 @@ const db = require('../config/database');
 const Model = require('../models/model.js');
 const express = require('express');
 const router = express.Router();
+const requetHash = require('request-hash');
 
 const bodyParser = require('body-parser');
 
@@ -18,22 +19,19 @@ router.get('/', (req, res) => {
     .catch(err => console.error(err));
 });
 
-router.use(bodyParser.json());
+//router.use(bodyParser.json());
 
 router.post('/add', (req, res) => {
     
     let {ID, PW} = req.body;
-
-    if(!ID){
-        alert('PLEASE CHECK ID');
-    }
-    if(!PW){
-        alert('PLEASE CHECK PW');
-    }
+    let hash = requetHash({
+        serializer: JSON.stringify,
+        algorithm: 'md5'
+    });
 
     Model.create({
         userID: ID,
-        userPW: PW
+        userPW: hash(PW)
     })
     .then((list)=>{
         console.log(list);
@@ -41,8 +39,6 @@ router.post('/add', (req, res) => {
     })
     .catch((err)=>{console.error(err);})
 })
-
-
 
 module.exports = router;
 
