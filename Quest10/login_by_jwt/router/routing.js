@@ -14,14 +14,30 @@ router.post('/add', (req, res) => {
         {
             userID: ID,
             userPW: PW
-        }, 'secret', 
+        }, 
+        'secret', 
         {
-            expiresIn: '30s'
-        },
-        (err, token) => {
-            console.log(token);
+            expiresIn: '1h'
         }
-    )
+    );
+
+    console.log('token is, ' + token);
+    
+    const decoded_data = jwt.verify(
+        token, 
+        'secret',
+        //callback 내부의 decoded data는 외부에서 재활용 할 수 없다
+        //callback은 확인용
+        /*(err, decoded) => {
+            console.log(decoded);
+        }*/
+    );
+    
+    //data 활용용도, 위 callback에서 사용한 이력이 없어야 한다.
+    //아래에서의 decoded data는 보여지지 않고, 직접 접근해야 한다.
+    console.log('dedoced data is, ' + decoded_data.userID);
+    console.log('dedoced data is, ' + decoded_data.userPW);
+    
     res.redirect('/jwt');
 })
 
