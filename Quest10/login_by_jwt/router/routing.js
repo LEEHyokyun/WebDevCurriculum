@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
+
+router.use('/', cookieParser());
 
 router.get('/', (req, res) => {
     res.render('jwt.html');
@@ -23,6 +26,19 @@ router.post('/add', (req, res) => {
 
     console.log('token is, ' + token);
     
+    //JWT save to cookie (*cookie-parser)
+    res.cookie('loginCookie', token, {
+    });
+    res.redirect('/jwt');
+});
+
+router.post('/check', (req, res) => {
+    
+    //get login token from cookies
+    let reqCookie = req.cookies;
+    let token = reqCookie.loginCookie;
+
+    //decode
     const decoded_data = jwt.verify(
         token, 
         'secret',
@@ -38,7 +54,6 @@ router.post('/add', (req, res) => {
     console.log('dedoced data is, ' + decoded_data.userID);
     console.log('dedoced data is, ' + decoded_data.userPW);
     
-    res.redirect('/jwt');
 })
 
 module.exports = router;
