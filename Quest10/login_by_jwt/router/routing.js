@@ -5,18 +5,18 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
-//session middleware
-router.use(session({
-    secret: 'secret_key',
-    resave: false,
-    store: new FileStore()
-}));
-
 router.use('/', cookieParser());
 
 router.get('/', (req, res) => {
     res.render('jwt.html');
 });
+
+//session middleware
+router.use(session({
+    secret: 'secretKey',
+    resave: false,
+    store: new FileStore()
+}));
 
 router.post('/add', (req, res) => {
     
@@ -30,9 +30,6 @@ router.post('/add', (req, res) => {
     //let userIDSession = req.session.userID;
     //let userPWSession = req.session.userPW;
 
-    req.session.save(err => {
-        console.error(err);
-    });
     //console.log(userIDSession);
     //console.log(userPWSession);
 
