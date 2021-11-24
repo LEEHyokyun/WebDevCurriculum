@@ -8,4 +8,5 @@ type userInfor {
 type Query {
     getAllUserInfor: [userInfor]!
     getUserInfor(userID: String!): userInfor!
+    setUserData(userID: String!, userPW: String!): [userInfor]!
 }
