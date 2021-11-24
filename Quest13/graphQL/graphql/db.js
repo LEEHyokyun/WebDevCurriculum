@@ -40,6 +40,19 @@ module.exports = {
         let newDB = userDB.findAll();
 
         if(newDB) return newDB;
+    },
+
+    deleteUserData: async (userID) => {
+        
+        await userDB.destroy({
+            where: {
+                userID: userID
+            }
+        })
+
+        let newDB = userDB.findAll();
+
+        if(newDB) return newDB;
     }
     
     
