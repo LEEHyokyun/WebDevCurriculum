@@ -4,7 +4,7 @@ const resolvers = {
     Query: {
         //named by resolvers => named by declared
         getAllUserInfor: () => getAllUserInfor(),
-        getUserInfor: (_, {ID}) => getUserInfor(ID)
+        getUserInfor: (_, {userID}) => getUserInfor(userID)
     }
 }
 
