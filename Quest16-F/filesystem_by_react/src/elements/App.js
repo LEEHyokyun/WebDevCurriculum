@@ -7,7 +7,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home/>} />
+        <Route path="/" exact={true} element={<Home/>} />
+        <Route path="/:userID" element={<Detail/>}/>
       </Routes>
     </Router>
   );
