@@ -33,7 +33,7 @@ function Home() {
 
     const [userID, setUserID] = useState('');
     const [userPW, setUserPW] = useState('');
-    
+
     const updateUserID = e => {
         const {target : {value}} = e;
         //value 변수 자체는 문자 하나하나
@@ -69,7 +69,7 @@ function Home() {
             </UserInformation>
             <Link to={{
                 pathname: `/${userID}`
-            }} onclick={() => saveStateValues(userID, userPW)}>로그인하기</Link>
+            }} onClick={() => saveStateValues(userID, userPW)}>로그인하기</Link>
         </Container>
     )
 };
